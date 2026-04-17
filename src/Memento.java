@@ -8,12 +8,8 @@ public class Memento {
     public Memento(String content){
         this.content = content;
     }
-    
-    // Setters and getters for content.
-    public void setContent(String content){
-        this.content = content;
-    }
 
+    // Getter for content.
     public String getContent(){
         return content;
     }

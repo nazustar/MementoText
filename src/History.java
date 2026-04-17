@@ -5,7 +5,6 @@ import java.util.Stack;
 // Caretaker.
 public class History {
 
-    private String content;
     Stack<Memento> stack = new Stack<>();
 
     public History (){
@@ -16,13 +15,21 @@ public class History {
         return stack.push(memento);
     }
 
-    public Memento undo(){
-        if(stack.isEmpty()){
-            System.out.println("No hay cambios guardados.");
+    public Memento undo() {
+        if (stack.isEmpty()) {
+            System.out.println("No hay cambios para deshacer.");
             return null;
-        }else{
-            return stack.pop();
         }
-    }
 
+        if (stack.size() == 1) {
+            System.out.println("No hay estados anteriores.");
+            return stack.peek();
+        }
+
+        // Delete actual state.
+        stack.pop();
+
+        // Return to old state.
+        return stack.peek();
+    }
 }
